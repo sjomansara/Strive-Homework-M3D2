@@ -58,7 +58,11 @@
         }
 
         let albumList = document.getElementById("modalInfo")
-        albumList.innerText = JSON.stringify(artistObject)
+        let albumArray = []
+        for (let i = 0; i < artistObject.length; i++) {
+          albumArray.push(JSON.stringify(artistObject[i].album.title))
+        }
+        albumList.innerText = albumArray
         
       })
       .catch(err => {
