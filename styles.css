@@ -1064,4 +1064,6 @@ td:hover {
   position: absolute;
   top: 360px;
   left: 35px;
+  background-color: transparent !important;
+  border-color: white !important;
 }
