@@ -1059,3 +1059,9 @@ td:hover {
   background-color: red;
   border: 1px solid black;
 } */
+
+#albumButton {
+  position: absolute;
+  top: 360px;
+  left: 35px;
+}
