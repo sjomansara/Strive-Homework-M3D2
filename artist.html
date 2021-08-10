@@ -25,6 +25,8 @@
 
   <body>
   <script>
+    let queryInfo
+
     window.addEventListener('load', event => {
       let artistObject = ""
       fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=eminem", {
@@ -36,23 +38,27 @@
       })
       .then(response => response.json())
       .then(artistInfo => {
-        artistObject = artistInfo.data
+        let artistObject = artistInfo.data
+        queryInfo = artistInfo.data
         console.log(artistObject)
-        artistName = document.getElementById("artistName")
+        let artistName = document.getElementById("artistName")
         artistName.innerText = artistObject[0].artist.name
 
-        artistImage = document.querySelectorAll("[id=queenSize]")
+        let artistImage = document.querySelectorAll("[id=queenSize]")
         // console.log(artistImage)
 
         for (let i = 0; i < artistImage.length; i++) {
           artistImage[i].src = artistObject[i].album.cover
         }
 
-        trackName = document.querySelectorAll("[id=trackName]")
+        let trackName = document.querySelectorAll("[id=trackName]")
         
         for (let i = 0; i < trackName.length; i++) {
           trackName[i].innerText = artistObject[i].title
         }
+
+        let albumList = document.getElementById("modalInfo")
+        albumList.innerText = JSON.stringify(artistObject)
         
       })
       .catch(err => {
@@ -293,8 +299,7 @@
                                       <span aria-hidden="true">&times;</span>
                                     </button>
                                   </div>
-                                  <div class="modal-body text-dark">
-                                    ...
+                                  <div class="modal-body text-dark" id="modalInfo">
                                   </div>
                                   <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
